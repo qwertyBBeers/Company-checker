@@ -1,0 +1,14 @@
+.venv/
+.codex
+__pycache__/
+*.py[cod]
+*.spec
+
+build/
+dist/
+assets/
+
+dday_data.json
+
+.DS_Store
+Thumbs.db
