@@ -1,29 +1,41 @@
 # Company Tracker
 
-Windows desktop interview D-Day tracker built with Python and PyQt6.
+PyQt6로 만든 Windows용 취업 준비 일정 관리 위젯입니다.
 
-This app starts as a compact widget-style window and expands into a detailed view for managing company interview schedules, notes, and related links.
+작게 떠 있는 위젯 형태로 면접 D-Day를 확인하다가, 필요할 때 창을 확장해서 회사별 메모, 면접 정보, 링크를 함께 관리할 수 있습니다.
 
-## Features
+## 미리보기
 
-- Compact widget mode with countdown list
-- Expandable detail view for memo, interview info, and links
-- Real-time D-Day countdown with seconds
-- Drag-and-drop company ordering
-- Sort by nearest interview date
-- Frameless movable window
-- Light/Dark mode toggle
-- Local JSON persistence
-- Windows `.exe` build script with icon packaging
+### 축소 모드
 
-## Tech Stack
+![축소 모드](image.png)
+
+### 확장 모드
+
+![확장 모드](image2.png)
+
+## 주요 기능
+
+- 축소 모드에서 회사별 D-Day 카운트다운 확인
+- 확장 모드에서 회사별 상세 메모 작성
+- 실시간 초 단위 D-Day 갱신
+- 회사 추가 / 삭제
+- 드래그 앤 드롭 순서 변경
+- 면접 일정 임박순 자동 정렬
+- 프레임 없는 위젯 스타일 창
+- 항상 위 옵션
+- 라이트 / 다크 모드 전환
+- 로컬 JSON 저장
+- Windows `.exe` 패키징 스크립트 포함
+
+## 기술 스택
 
 - Python 3.x
 - PyQt6
-- Local JSON storage
-- PyInstaller for Windows packaging
+- JSON 파일 저장
+- PyInstaller
 
-## Project Structure
+## 프로젝트 구조
 
 ```text
 app.py
@@ -35,9 +47,11 @@ README_WINDOWS_BUILD.md
 scripts/
   generate_icon.py
 dday_data.example.json
+image.png
+image2.png
 ```
 
-## Local Run
+## 실행 방법
 
 ### Linux / macOS
 
@@ -57,45 +71,38 @@ pip install -r requirements.txt
 python app.py
 ```
 
-## Windows Build
+## Windows용 exe 빌드
 
-Build a packaged Windows app with:
+Windows에서 아래 둘 중 하나를 실행하면 됩니다.
 
 ```powershell
 build_windows.bat
 ```
 
-or
+또는
 
 ```powershell
 .\build_windows.ps1
 ```
 
-Output:
+빌드가 끝나면 실행 파일은 아래 경로에 생성됩니다.
 
 ```text
 dist\CompanyTracker\CompanyTracker.exe
 ```
 
-More packaging notes are in [README_WINDOWS_BUILD.md](README_WINDOWS_BUILD.md).
+추가 패키징 메모는 [README_WINDOWS_BUILD.md](README_WINDOWS_BUILD.md)에 정리되어 있습니다.
 
-## Data File
+## 데이터 파일
 
-Runtime data is stored in `dday_data.json`.
+실행 데이터는 `dday_data.json`에 저장됩니다.
 
-- `dday_data.json` is ignored by git.
-- `dday_data.example.json` is included as a repo-safe sample.
+- `dday_data.json`은 git에 포함되지 않습니다.
+- `dday_data.example.json`은 예시 파일입니다.
 
-## Recommended Git Upload Flow
+## git 업로드 참고
 
-```bash
-git init
-git add .
-git status
-git commit -m "Initial commit: Company Tracker"
-```
-
-Before pushing, check that these are not staged:
+현재 `.gitignore`에 아래 항목들이 제외되도록 설정되어 있습니다.
 
 - `.venv/`
 - `__pycache__/`
@@ -104,7 +111,7 @@ Before pushing, check that these are not staged:
 - `assets/`
 - `dday_data.json`
 
-## Notes
+## 참고
 
-- The current data file is stored next to the app for simplicity.
-- If you later want a more production-like app, move data storage to `%APPDATA%` on Windows.
+- 현재는 단순한 로컬 실행 구조라서 데이터 파일이 프로젝트 옆에 저장됩니다.
+- 이후 배포형 앱으로 다듬으려면 Windows에서는 `%APPDATA%` 경로에 저장하도록 바꾸는 것이 더 적절합니다.
